@@ -21,7 +21,7 @@ var EmployeeService = function () {
         ));
         deferred.resolve();
         return deferred.promise();
-    }
+    };
 
     this.findById = function (id) {
 
@@ -39,7 +39,7 @@ var EmployeeService = function () {
 
         deferred.resolve(employee);
         return deferred.promise();
-    }
+    };
 
     this.findByName = function (searchKey) {
         var deferred = $.Deferred(),
@@ -50,6 +50,6 @@ var EmployeeService = function () {
             });
         deferred.resolve(results);
         return deferred.promise();
-    }
+    };
 
 }

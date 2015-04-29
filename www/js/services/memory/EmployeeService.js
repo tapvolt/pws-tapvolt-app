@@ -1,13 +1,13 @@
-var EmployeeService = function() {
+var EmployeeService = function () {
 
-    this.initialize = function() {
+    this.initialize = function () {
         // No Initialization required
         var deferred = $.Deferred();
         deferred.resolve();
         return deferred.promise();
-    }
+    };
 
-    this.findById = function(id) {
+    this.findById = function (id) {
         var deferred = $.Deferred();
         var employee = null;
         var l = employees.length;
@@ -19,7 +19,7 @@ var EmployeeService = function() {
         }
         deferred.resolve(employee);
         return deferred.promise();
-    }
+    };
 
     this.findByName = function(searchKey) {
         var deferred = $.Deferred();
@@ -29,7 +29,7 @@ var EmployeeService = function() {
         });
         deferred.resolve(results);
         return deferred.promise();
-    }
+    };
 
     var employees = [
         {"id": 1, "firstName": "James", "lastName": "King", "managerId": 0, "managerName": "", "title": "President and CEO", "department": "Corporate", "cellPhone": "617-000-0001", "officePhone": "781-000-0001", "email": "jking@fakemail.com", "city": "Boston, MA", "pic": "James_King.jpg", "twitterId": "@fakejking", "blog": "http://coenraets.org"},
