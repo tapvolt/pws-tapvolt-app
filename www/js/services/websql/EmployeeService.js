@@ -18,7 +18,7 @@ var EmployeeService = function () {
             }
         );
         return deferred.promise();
-    }
+    };
 
     this.findByName = function (searchKey) {
         var deferred = $.Deferred();
