@@ -18,7 +18,7 @@ var EmployeeService = function () {
             }
         );
         return deferred.promise();
-    }
+    };
 
     this.findByName = function (searchKey) {
         var deferred = $.Deferred();
@@ -45,7 +45,7 @@ var EmployeeService = function () {
             }
         );
         return deferred.promise();
-    }
+    };
 
     this.findById = function (id) {
         var deferred = $.Deferred();
@@ -89,7 +89,7 @@ var EmployeeService = function () {
             function (tx, error) {
                 alert('Create table error: ' + error.message);
             });
-    }
+    };
 
     var addSampleData = function (tx, employees) {
 
@@ -122,6 +122,6 @@ var EmployeeService = function () {
                     alert('INSERT error: ' + error.message);
                 });
         }
-    }
+    };
 
 }

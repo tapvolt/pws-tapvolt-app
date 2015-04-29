@@ -4,3 +4,6 @@
 plugins
 platforms
 
+# ignore PHPStorm
+.idea
+
