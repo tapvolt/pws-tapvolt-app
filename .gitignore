@@ -1,0 +1,6 @@
+# Git Ignore
+
+# ignore the plugins and platform directories
+plugins
+platforms
+
