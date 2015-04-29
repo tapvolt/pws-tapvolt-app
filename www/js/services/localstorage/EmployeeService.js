@@ -1,6 +1,6 @@
 var EmployeeService = function () {
 
-    this.initialize = function() {
+    this.initialize = function () {
         var deferred = $.Deferred();
         // Store sample data in Local Storage
         window.localStorage.setItem("employees", JSON.stringify(
