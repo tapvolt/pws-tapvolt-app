@@ -23,15 +23,15 @@ var EmployeeService = function () {
         return deferred.promise();
     };
 
-    this.findById = function (id) {
+    this.findById = function( id ) {
 
         var deferred = $.Deferred();
-        var employees = JSON.parse(window.localStorage.getItem("employees")),
+        var employees = JSON.parse( window.localStorage.getItem( "employees" ) ),
             employee = null,
             l = employees.length;
 
-        for (var i = 0; i < l; i++) {
-            if (employees[i].id === id) {
+        for ( var i = 0; i < l; i++ ) {
+            if ( employees[i].id === id ) {
                 employee = employees[i];
                 break;
             }
