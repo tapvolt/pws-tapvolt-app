@@ -1,44 +1,46 @@
-// We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
-(function () {
+// We use an "Immediate Function" to initialize the application
+// to avoid leaving anything behind in the global scope
+( function() {
+
+    "use strict";
 
     /* ---------------------------------- Local Variables ---------------------------------- */
+    HomeView.prototype.template = Handlebars.compile( $( "#home-tpl" ).html() );
+    EmployeeListView.prototype.template = Handlebars.compile( $( "#employee-list-tpl" ).html() );
     var service = new EmployeeService();
-    service.initialize().done(function () {
-        console.log("Service initialized");
-    });
+    service.initialize().done( function() {
+        $( "body" ).html( new HomeView( service ).render().$el );
+        console.log( "Service initialized" );
+    } );
 
     /* --------------------------------- Event Registration -------------------------------- */
-    $('.search-key').on('keyup', findByName);
-    $('.help-btn').on('click', function() {
-        alert("Employee Directory v3.4");
-    });
+    // Override default HTML alert with native dialog
+    document.addEventListener( "deviceready", function() {
 
-    // Overdide defualt HTML alert with native dialog
-    document.addEventListener('deviceready', function() {
-        FastClick.attach(document.body);
-        if (navigator.notification) {
-            window.alert = function (message) {
-                navigator.notification.alert(
-                    message, // message
-                    null, // callback
-                    "PWS", // title
-                    'OK' // buttonName
-                );
-            };
+        FastClick.attach( document.body );
+        setStatusBar();
+        if ( navigator.notification ) {
+            setNotifications();
         }
-    }, false);
+    }, false );
 
     /* ---------------------------------- Local Functions ---------------------------------- */
-    function findByName() {
-        service.findByName($('.search-key').val()).done(function (employees) {
-            var l = employees.length;
-            var e;
-            $('.employee-list').empty();
-            for (var i = 0; i < l; i++) {
-                e = employees[i];
-                $('.employee-list').append('<li><a href="#employees/' + e.id + '">' + e.firstName + ' ' + e.lastName + '</a></li>');
-            }
-        });
+
+    function setStatusBar() {
+        StatusBar.overlaysWebView( false );
+        StatusBar.backgroundColorByHexString( "#ffffff" );
+        StatusBar.styleDefault();
     }
 
-}());
+    function setNotifications() {
+        window.alert = function( message ) {
+            navigator.notification.alert(
+                message, // message
+                null, // callback
+                "Personal Weather Station", // title
+                "OK" // buttonName
+            );
+        };
+    }
+
+}() );
