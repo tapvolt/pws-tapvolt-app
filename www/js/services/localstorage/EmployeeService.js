@@ -25,8 +25,8 @@ var EmployeeService = function () {
 
     this.findById = function (id) {
 
-        var deferred = $.Deferred(),
-            employees = JSON.parse(window.localStorage.getItem("employees")),
+        var deferred = $.Deferred();
+        var employees = JSON.parse(window.localStorage.getItem("employees")),
             employee = null,
             l = employees.length;
 

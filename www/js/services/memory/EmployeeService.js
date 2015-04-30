@@ -11,7 +11,7 @@ var EmployeeService = function () {
         var deferred = $.Deferred();
         var employee = null;
         var l = employees.length;
-        for (var i=0; i < l; i++) {
+        for (var i = 0; i < l; i++) {
             if (employees[i].id === id) {
                 employee = employees[i];
                 break;
