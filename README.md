@@ -9,5 +9,7 @@ cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.console
 cordova plugin add org.apache.cordova.dialogs
 (npm install jscs -g)
+cordova plugins add org.apache.cordova.statusbar
+cordova plugin add org.apache.cordova.geolocation
 
 
