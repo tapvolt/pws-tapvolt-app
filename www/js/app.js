@@ -8,7 +8,7 @@
     HomeView.prototype.template = Handlebars.compile( $( "#home-tpl" ).html() );
     EmployeeListView.prototype.template = Handlebars.compile( $( "#employee-list-tpl" ).html() );
     EmployeeView.prototype.template = Handlebars.compile( $("#employee-tpl").html() );
-    var service = new EmployeeService();
+    var service = new FetchWeatherService();
     var slider = new PageSlider( $( "body" ) );
 
     service.initialize().done( function() {
