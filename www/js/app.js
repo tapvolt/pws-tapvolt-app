@@ -22,7 +22,7 @@
             $routeProvider.when(
                 "/employees/:employeeId", {
                     templateUrl: "partials/employee-detail.html",
-                    controller: "EmployeeDirectCtrl"
+                    controller: "EmployeeDetailCtrl"
                 }
             );
             $routeProvider.when(

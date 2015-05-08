@@ -22,7 +22,7 @@
             var i;
 
             for ( i = 0; i < l; i = i + 1 ) {
-                if ( employees[ id].id === id ) {
+                if ( employees[ id ].id === id ) {
                     employee = employees[ id ];
                     break;
                 }
@@ -45,7 +45,7 @@
                         return employees;
                     },
                     get: function( employee ) {
-                        return findById( parseInt( employee.employeId ) );
+                        return findById( parseInt( employee.employeeId ) );
                     }
                 }
             } ] )
