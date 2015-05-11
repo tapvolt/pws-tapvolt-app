@@ -14,15 +14,15 @@
     ] ).
     config( [ "$routeProvider", function( $routeProvider ) {
             $routeProvider.when(
-                "/employees", {
-                    templateUrl: "partials/employee-list.html",
-                    controller: "EmployeeListCtrl"
+                "/observations", {
+                    templateUrl: "partials/observation-list.html",
+                    controller: "ObservationsListCtrl"
                 }
             );
             $routeProvider.when(
-                "/employees/:employeeId", {
-                    templateUrl: "partials/employee-detail.html",
-                    controller: "EmployeeDetailCtrl"
+                "/observations/:observationId", {
+                    templateUrl: "partials/observation-detail.html",
+                    controller: "ObservationDetailCtrl"
                 }
             );
             $routeProvider.when(
@@ -31,6 +31,6 @@
                     controller: "ReportListCtrl"
                 }
             );
-            $routeProvider.otherwise( { redirectTo: "employees" } );
+            $routeProvider.otherwise( { redirectTo: "observations" } );
         } ] );
 } () );

@@ -5,18 +5,18 @@
         </a>
     </div>
     <div class="topcoat-navigation-bar__item center half">
-        <h1 class="topcoat-navigation-bar__title">Employee</h1>
+        <h1 class="topcoat-navigation-bar__title">Observation</h1>
     </div>
 </div>
 
 <div class='details'>
-    <img ng-src="pics/{{employee.pic}}" class="employee-image">
-    <h1>{{employee.firstName}} {{employee.lastName}}</h1>
-    <h2>{{employee.title}}</h2>
-    <h2>{{employee.city}}</h2>
+    <img ng-src="pics/{{observation.pic}}" class="employee-image">
+    <h1>{{observation.tempm}} degrees Celsius</h1>
+    <h2>{{observation.tempi}} degrees Fahrenheit</h2>
+    <h2>{{observation.date.pretty}}</h2>
     <div class="topcoat-list__container scroller">
         <ul class="topcoat-list list actions">
-            <li class="topcoat-list__item" ng-show="employee.managerId"><a ng-click="go('employees/' + employee.managerId)"><p>View Manager</p><p>{{employee.managerName}}</p><div class="action-icon icon-manager"/></a></li>
+            <li class="topcoat-list__item" ng-show="observation.wspdm"><a ng-click="go('employees/' + employee.managerId)"><p>View Manager</p><p>{{employee.managerName}}</p><div class="action-icon icon-manager"/></a></li>
             <li class="topcoat-list__item" ng-show="employee.reports"><a ng-click="go('employees/' + employee.id + '/reports')"><p>View Direct Reports</p><p>{{employee.reports}}</p><div class="action-icon icon-reports"/></a></li>
             <li class="topcoat-list__item" ng-show="employee.officePhone"><a href="tel:{{employee.officePhone}}"><p>Call Office</p><p>{{employee.officePhone}}</p><div class="action-icon icon-call"/></a></li>
             <li class="topcoat-list__item" ng-show="employee.cellPhone"><a href="tel:{{employee.cellPhone}}"><p>Call Cell</p><p>{{employee.cellPhone}}</p><div class="action-icon icon-call"/></a></li>
