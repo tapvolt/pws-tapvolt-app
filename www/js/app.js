@@ -1,59 +1,36 @@
-// We use an "Immediate Function" to initialize the application
-// to avoid leaving anything behind in the global scope
+/**
+ * Created by gjackson on 06/05/15.
+ */
 ( function() {
 
     "use strict";
 
-    /* ---------------------------------- Local Variables ---------------------------------- */
-    HomeView.prototype.template = Handlebars.compile( $( "#home-tpl" ).html() );
-    EmployeeListView.prototype.template = Handlebars.compile( $( "#employee-list-tpl" ).html() );
-    EmployeeView.prototype.template = Handlebars.compile( $("#employee-tpl").html() );
-    var service = new FetchWeatherService();
-    var slider = new PageSlider( $( "body" ) );
-
-    service.initialize().done( function() {
-        router.addRoute( "", function() {
-            slider.slidePage( new HomeView( service ).render().$el );
-        } );
-        console.log( "Service initialized" );
-    } );
-
-    router.addRoute( "employees/:id", function( id ) {
-        service.findById( parseInt( id ) ).done( function( employee ) {
-            slider.slidePage(new EmployeeView( employee ).render().$el );
-        } );
-    } );
-
-    router.start();
-
-    /* --------------------------------- Event Registration -------------------------------- */
-    // Override default HTML alert with native dialog
-    document.addEventListener( "deviceready", function() {
-
-        FastClick.attach( document.body );
-        setStatusBar();
-        if ( navigator.notification ) {
-            setNotifications();
-        }
-    }, false );
-
-    /* ---------------------------------- Local Functions ---------------------------------- */
-
-    function setStatusBar() {
-        StatusBar.overlaysWebView( false );
-        StatusBar.backgroundColorByHexString( "#ffffff" );
-        StatusBar.styleDefault();
-    }
-
-    function setNotifications() {
-        window.alert = function( message ) {
-            navigator.notification.alert(
-                message, // message
-                null, // callback
-                "Personal Weather Station", // title
-                "OK" // buttonName
+    angular.module( "myApp", [
+        "ngTouch",
+        "ngRoute",
+        "ngAnimate",
+        "myApp.controllers",
+        "myApp.memoryServices"
+    ] ).
+    config( [ "$routeProvider", function( $routeProvider ) {
+            $routeProvider.when(
+                "/employees", {
+                    templateUrl: "partials/employee-list.html",
+                    controller: "EmployeeListCtrl"
+                }
             );
-        };
-    }
-
-}() );
+            $routeProvider.when(
+                "/employees/:employeeId", {
+                    templateUrl: "partials/employee-detail.html",
+                    controller: "EmployeeDetailCtrl"
+                }
+            );
+            $routeProvider.when(
+                "/employees/:employeeId/reports", {
+                    templateUrl: "partials/report-list.html",
+                    controller: "ReportListCtrl"
+                }
+            );
+            $routeProvider.otherwise( { redirectTo: "employees" } );
+        } ] );
+} () );
