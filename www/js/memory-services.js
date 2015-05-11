@@ -22,16 +22,16 @@
             var i;
 
             for ( i = 0; i < l; i = i + 1 ) {
-                if ( employees[ id ].id === id ) {
-                    employee = employees[ id ];
+                if ( employees[ i ].id === id ) {
+                    employee = employees[ i ];
                     break;
                 }
             }
             return employee;
         },
 
-        findByManager = function( managerId ) {
-            var results = employees.filter( function( element ) {
+        findByManager = function ( managerId ) {
+            var results = employees.filter( function ( element ) {
                 return managerId === element.managerId;
             } );
             return results;
@@ -49,13 +49,13 @@
                     }
                 }
             } ] )
-        .factory( "Report", [
-            function() {
+        .factory('Report', [
+            function () {
                 return {
                     query: function( employee ) {
-                        return findByManager( parseInt( employee.emloyeeId ) );
+                        return findByManager( parseInt( employee.employeeId ) );
                     }
                 }
             } ] );
 
-} )();
+} () );
