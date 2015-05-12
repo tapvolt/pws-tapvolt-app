@@ -5412,25 +5412,15 @@
         },
 
         findById = function( id ) {
-            var result = null;
+            var observation = null;
 
-            // not efficient
-            angular.forEach( listOfObservations, function( observation, observationKey ) {
-                if( observation[ 'observationId' ] === id ) {
-                    result = observation;
-                    console.log('match!');
+            for( var i = 0; i < listOfObservations.length; i++ ) {
+                if( listOfObservations[ i ][ 'observationId' ] === id ) {
+                    observation = listOfObservations[ i ];
+                    console.log( 'matched observation' );
                 }
-            } )
-            return result;
-
-
-            //for ( i = 0; i < l; i = i + 1 ) {
-            //    if ( listOfObservations[ i ].observationId === id ) {
-            //        observation = listOfObservations[ i ];
-            //        break;
-            //    }
-            //}
-            //return observation;
+            }
+            return observation;
         },
 
         findByManager = function ( managerId ) {
