@@ -12,7 +12,7 @@ angular.module( 'myApp.controllers', [] )
             $location.url(path);
         }
     }])
-    .controller( "ObservationsListCtrl", [ "$scope", "Observation", function( $scope, Observation ) {
+    .controller( "ObservationsListCtrl", [ "$scope", "$http", "Observation", function( $scope, $http, Observation ) {
         $scope.observations = Observation.query();
     } ] )
     .controller( "ObservationDetailCtrl", [ "$scope", "$routeParams", "Observation", function( $scope, $routeParams, Observation ) {

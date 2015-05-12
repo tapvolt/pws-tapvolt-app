@@ -5392,7 +5392,7 @@
          */
         _addId = function( observations ) {
             angular.forEach( observations, function( observation, observationKey ) {
-                observation[ 'observationId' ] = observationKey;
+                observation[ "observationId" ] = observationKey;
                 console.log( observation, observationKey );
             } );
             return observations;
@@ -5415,9 +5415,9 @@
             var observation = null;
 
             for( var i = 0; i < listOfObservations.length; i++ ) {
-                if( listOfObservations[ i ][ 'observationId' ] === id ) {
+                if( listOfObservations[ i ].observationId === id ) {
                     observation = listOfObservations[ i ];
-                    console.log( 'matched observation' );
+                    console.log( "matched observation" );
                 }
             }
             return observation;
@@ -5431,8 +5431,8 @@
         };
 
     angular.module( "myApp.memoryServices", [] )
-        .service( "Observation", [
-            function() {
+        .service( "Observation", [ "$http",
+            function( $http ) {
                 return {
                     query: function() {
                         return getObservations();
