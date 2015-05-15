@@ -13,8 +13,11 @@ myApp
     }
 }])
 .controller( "ObservationsListCtrl", [ "$scope", "$http", "observationService", function( $scope, $http, observationService ) {
-    $scope.observations = observationService.query();
+        observationService.query().then( function( data ) { $scope.observations = data; });
 } ] )
+
+
+
 .controller( "ObservationDetailCtrl", [ "$scope", "$routeParams", "Observation", function( $scope, $routeParams, Observation ) {
     $scope.observation = Observation.get( {
             observationId: $routeParams.observationId
