@@ -12,8 +12,28 @@ myApp
         $location.url(path);
     }
 }])
+
 .controller( "ObservationsListCtrl", [ "$scope", "$http", "observationService", function( $scope, $http, observationService ) {
-        observationService.query().then( function( data ) { $scope.observations = data; });
+
+        if (observationService.hasObservations() ) {
+            $scope.observations = observationService.query2();
+        } else {
+
+            observationService.query().then(
+                function( data ) {
+                    $scope.observations = data;
+                }
+            );
+
+
+
+
+
+        }
+        $scope.hello();
+
+
+
 } ] )
 
 
