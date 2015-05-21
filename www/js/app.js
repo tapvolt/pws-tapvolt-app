@@ -16,9 +16,9 @@ var myApp = angular.module( "myApp", [ "ngTouch", "ngRoute", "ngAnimate" ] )
         }
     );
     $routeProvider.when(
-        "/observations/:observationId", {
-            templateUrl: "partials/observation-detail.html",
-            controller: "ObservationDetailCtrl"
+        "/list/:id", {
+            templateUrl: "partials/detail.html",
+            controller: "DetailCtrl"
         }
     );
     $routeProvider.when(
@@ -29,15 +29,3 @@ var myApp = angular.module( "myApp", [ "ngTouch", "ngRoute", "ngAnimate" ] )
     );
     $routeProvider.otherwise( { redirectTo: "list" } );
 }])
-
-
-myApp.run( function( $rootScope ) {
-
-    var obs = [];
-
-    $rootScope.hasObservations  = function() {
-        console.log( 'hasObservations ', (obs.length > 0 ) );
-        return obs.length > 0;
-    }
-
-});

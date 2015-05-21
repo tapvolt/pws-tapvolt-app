@@ -11,11 +11,11 @@
 <div class="topcoat-list__container scroller" style="top:138px;">
     <ul class="topcoat-list list">
         <li ng-repeat="observation in observations | filter:query | orderBy:orderProp" class="topcoat-list__item">
-            <a ng-click="go('/observations/' + observation.id)">
+            <a ng-click="go('/list/' + observation.id)">
             <img ng-src="pics/default.png">
             <p>{{observation.tempm}} degrees Celsius </p>
             <p>{{observation.date.pretty}}</p>
-            <span class="chevron"></span><span class="count">{{observation.id}}</span>
+            <span class="chevron"></span>
             </a>
         </li>
     </ul>

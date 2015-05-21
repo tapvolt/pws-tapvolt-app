@@ -7,11 +7,11 @@ myApp
         $rootScope.back = function() {
             $scope.slide = 'slide-right';
             $window.history.back();
-        }
+        };
         $rootScope.go = function(path){
             $scope.slide = 'slide-left';
             $location.url(path);
-        }
+        };
 
 }])
 
@@ -19,12 +19,12 @@ myApp
 
         if ( memoryService.isSet() ) {
             console.log( "has weather locally" );
-            $scope.observations = memoryService.get();
+            $scope.observations = memoryService.getAll();
         } else {
             console.log( "no weather locally" );
             restService.get().then(
                 function( data ) {
-                    memoryService.set( data );
+                    memoryService.setAll( data );
                     $scope.observations = data;
                 }
             );
@@ -32,13 +32,12 @@ myApp
 
 }])
 
+.controller( "DetailCtrl", [ "$scope", "$routeParams", "memoryService", function( $scope, $routeParams, memoryService ) {
 
+        $scope.observation = memoryService.get( $routeParams.id );
 
-.controller( "ObservationDetailCtrl", [ "$scope", "$routeParams", "Observation", function( $scope, $routeParams, Observation ) {
-    $scope.observation = Observation.get( {
-            observationId: $routeParams.observationId
-        } );
-} ] )
+}])
+
 .controller('ReportListCtrl', ['$scope', '$routeParams', 'Report', function ($scope, $routeParams, Report) {
     $scope.employees = Report.query({employeeId: $routeParams.employeeId});
 }]);
