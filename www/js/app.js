@@ -10,15 +10,15 @@ var myApp = angular.module( "myApp", [ "ngTouch", "ngRoute", "ngAnimate" ] )
 
 .config( [ "$routeProvider", function( $routeProvider ) {
     $routeProvider.when(
-        "/observations", {
-            templateUrl: "partials/observation-list.html",
-            controller: "ObservationsListCtrl"
+        "/list", {
+            templateUrl: "partials/list.html",
+            controller: "ListCtrl"
         }
     );
     $routeProvider.when(
-        "/observations/:observationId", {
-            templateUrl: "partials/observation-detail.html",
-            controller: "ObservationDetailCtrl"
+        "/list/:id", {
+            templateUrl: "partials/detail.html",
+            controller: "DetailCtrl"
         }
     );
     $routeProvider.when(
@@ -27,12 +27,5 @@ var myApp = angular.module( "myApp", [ "ngTouch", "ngRoute", "ngAnimate" ] )
             controller: "ReportListCtrl"
         }
     );
-    $routeProvider.otherwise( { redirectTo: "observations" } );
+    $routeProvider.otherwise( { redirectTo: "list" } );
 }])
-
-
-myApp.run( function( $rootScope ) {
-    $rootScope.hello = function() {
-        console.log( 'hellor' );
-    }
-});
