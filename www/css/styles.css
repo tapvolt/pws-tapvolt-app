@@ -1,3 +1,7 @@
+html {
+    background: #ffffff;
+}
+
 .back-button {
     top: 10px;
     position: absolute;
@@ -6,7 +10,6 @@
 .scroller {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    position: absolute;
     top: 168px;
     bottom: 0px;
     left: 0px;

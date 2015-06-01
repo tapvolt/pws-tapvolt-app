@@ -12,7 +12,8 @@ var myApp = angular.module( "myApp", [ "ngTouch", "ngRoute", "ngAnimate" ] )
     $routeProvider.when(
         "/list", {
             templateUrl: "partials/list.html",
-            controller: "ListCtrl"
+            controller: "ListCtrl",
+            controllerAs: "Ctrl"
         }
     );
     $routeProvider.when(

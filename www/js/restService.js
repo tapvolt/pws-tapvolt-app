@@ -15,7 +15,7 @@ myApp.service( "restService", [ "weatherUnderground", "$http", "$q", function( w
         var url = _getWeatherUrl();
         $http.jsonp( url ).
             success( function( data ) {
-                defer.resolve( data.history.observations );
+                defer.resolve( data );
                 console.log( "success: _get()" );
             }).
             error( function( error ) {

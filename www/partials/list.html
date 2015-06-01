@@ -1,6 +1,8 @@
 <div class="topcat-navigation-bar">
-    <div class="topcat-navigation-bar__item center full">
+    <div class="topcat-navigation-bar__item center list-header">
         <h1 class="topcat-navigation-bar__title">Weather Today</h1>
+        <i class="fa fa-tint fa-5x">{{Ctrl.observations[0].tempm}}</i>
+        <span>Ave: {{Ctrl.summary.meantempm}}</span><span> Max: {{Ctrl.summary.maxtempm}}</span><span> Min: {{Ctrl.summary.mintempm}}</span>
     </div>
 </div>
 
@@ -10,7 +12,7 @@
 
 <div class="topcoat-list__container scroller" style="top:138px;">
     <ul class="topcoat-list list">
-        <li ng-repeat="observation in observations | filter:query | orderBy:orderProp" class="topcoat-list__item">
+        <li ng-repeat="observation in Ctrl.observations | filter:query | orderBy:orderProp" class="topcoat-list__item {{$odd}}">
             <a ng-click="go('/list/' + observation.id)">
             <img ng-src="pics/default.png">
             <p>{{observation.tempm}} degrees Celsius </p>

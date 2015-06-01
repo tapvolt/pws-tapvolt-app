@@ -15,21 +15,26 @@ myApp
 
 }])
 
-.controller( "ListCtrl", [ "$scope", "$http", "restService", "memoryService", function( $scope, $http, restService, memoryService ) {
+.controller( "ListCtrl", [ "restService", "memoryService", function( restService, memoryService ) {
 
-        if ( memoryService.isSet() ) {
-            console.log( "has weather locally" );
-            $scope.observations = memoryService.getAll();
-        } else {
-            console.log( "no weather locally" );
-            restService.get().then(
-                function( data ) {
-                    memoryService.setAll( data );
-                    $scope.observations = data;
-                }
-            );
-        }
-
+        var self = this;
+        var init = function() {
+            if (memoryService.isSet()) {
+                console.log("has weather locally");
+                self.observations = memoryService.getAllHistory();
+                self.summary = memoryService.getSummary();
+            } else {
+                console.log("no weather locally");
+                restService.get().then(
+                    function (data) {
+                        memoryService.setAll(data);
+                        self.observations = memoryService.getAllHistory();
+                        self.summary = memoryService.getSummary();
+                    }
+                );
+            }
+        };
+        init();
 }])
 
 .controller( "DetailCtrl", [ "$scope", "$routeParams", "memoryService", function( $scope, $routeParams, memoryService ) {

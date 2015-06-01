@@ -2,7 +2,11 @@
 
 myApp.service( "memoryService", [ "weatherUnderground", "$http", "$q", function( weatherUnderground, $http, $q ) {
 
-    var memory = [];
+    var memory = {
+        history: [],
+        summary: null
+    };
+
 
     /**
      * invert the array of observations so most recent come first
@@ -60,16 +64,21 @@ myApp.service( "memoryService", [ "weatherUnderground", "$http", "$q", function(
     var observationService = {
 
         isSet: function() {
-            return ( memory.length === 0 ) ? false : true ;
+            return ( memory.history.length === 0 ) ? false : true ;
         },
 
         setAll: function( data ) {
-            memory = _invert( _addId( data ) );
+            memory.history = _invert( _addId( data.history.observations ) );
+            memory.summary = data.history.dailysummary[0];
             console.log( "memory set" );
         },
 
-        getAll: function() {
-            return memory;
+        getAllHistory: function() {
+            return memory.history;
+        },
+
+        getSummary: function() {
+            return memory.summary;
         },
 
         get: function( id ) {
