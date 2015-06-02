@@ -29,4 +29,4 @@ var myApp = angular.module( "myApp", [ "ngTouch", "ngRoute", "ngAnimate" ] )
         }
     );
     $routeProvider.otherwise( { redirectTo: "list" } );
-}])
+}]);

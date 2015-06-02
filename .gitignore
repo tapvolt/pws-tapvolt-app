@@ -7,3 +7,6 @@ platforms
 # ignore PHPStorm
 .idea
 
+# ignore npm
+node_modules
+
