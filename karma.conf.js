@@ -19,11 +19,13 @@ module.exports = function(config) {
         'www/lib/angular-touch.js',
         'www/lib/angular-resource.js',
         'www/lib/angular-animate.js',
-        'www/lib/angular-rou',
+        'www/lib/angular-route.js',
         'www/js/app.js',
         'www/js/controllers.js',
         'www/js/restService.js',
-        'www/js/memoryService.js'
+        'www/js/memoryService.js',
+
+        'tests/unit/controllersSpec.js'
     ],
 
 
