@@ -78,7 +78,7 @@ a {
 .list > li {
     position: relative;
     clear: both;
-    padding: 0px;
+    padding: 10px;
     margin: 0px;
 }
 

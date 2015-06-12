@@ -1,6 +1,6 @@
 "use strict";
 
-myApp.service( "memoryService", [ "weatherUnderground", "$http", "$q", function( weatherUnderground, $http, $q ) {
+myApp.factory( "memoryService", [ "weatherUnderground", "$log", "$q", function( weatherUnderground, $log, $q ) {
 
     var memory = {
         history: [],
@@ -41,7 +41,7 @@ myApp.service( "memoryService", [ "weatherUnderground", "$http", "$q", function(
         for ( var i = 0; i < memory.length; i++ ) {
             if ( memory[ i ].id == id ) {
                 item = memory[ i ];
-                console.log( "matched id" );
+                $log.log( "matched id" );
                 break;
             }
         }
@@ -64,13 +64,13 @@ myApp.service( "memoryService", [ "weatherUnderground", "$http", "$q", function(
     var observationService = {
 
         isSet: function() {
-            return ( memory.history.length === 0 ) ? false : true ;
+            return memory.history.length === 0  ? false : true ;
         },
 
         setAll: function( data ) {
             memory.history = _invert( _addId( data.history.observations ) );
             memory.summary = data.history.dailysummary[0];
-            console.log( "memory set" );
+            $log.log( "memory set" );
         },
 
         getAllHistory: function() {

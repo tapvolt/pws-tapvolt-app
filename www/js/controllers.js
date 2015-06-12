@@ -15,12 +15,13 @@ myApp
 
 }])
 
-.controller( "ListCtrl", [ "restService", "memoryService", function( restService, memoryService ) {
+.controller( "ListCtrl", [ '$log', "restService", "memoryService", function( $log, restService, memoryService ) {
 
         var self = this;
+
         var init = function() {
             if (memoryService.isSet()) {
-                console.log("has weather locally");
+                $log.log("has weather locally");
                 self.observations = memoryService.getAllHistory();
                 self.summary = memoryService.getSummary();
             } else {

@@ -1,6 +1,6 @@
 "use strict";
 
-myApp.service( "restService", [ "weatherUnderground", "$http", "$q", function( weatherUnderground, $http, $q ) {
+myApp.factory( "restService", [ "weatherUnderground", "$log", "$http", "$q", function( weatherUnderground, $log, $http, $q ) {
 
     var _getWeatherUrl = function() {
         var url = weatherUnderground.WU_URL;
@@ -16,11 +16,11 @@ myApp.service( "restService", [ "weatherUnderground", "$http", "$q", function( w
         $http.jsonp( url ).
             success( function( data ) {
                 defer.resolve( data );
-                console.log( "success: _get()" );
+                $log.log( "success: _get()" );
             }).
             error( function( error ) {
                 defer.reject( error );
-                console.log( "error:", error );
+                $log.log( "error:", error );
             });
 
         return defer.promise;
