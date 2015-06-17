@@ -1,7 +1,8 @@
 "use strict";
 
-myApp.factory( "memoryService", [ "weatherUnderground", "$log", "$q", function( weatherUnderground, $log, $q ) {
+myApp.factory( "memoryService", [ "restService", "weatherUnderground", "$log", "$q", function( restService, weatherUnderground, $log, $q ) {
 
+    var self = this;
     var memory = {
         history: [],
         summary: null
@@ -61,6 +62,14 @@ myApp.factory( "memoryService", [ "weatherUnderground", "$log", "$q", function( 
         return results;
     };
 
+
+    var _super = function( data ) {
+        memory.history = _invert( _addId( data.history.observations ) );
+        memory.summary = data.history.dailysummary[0];
+        $log.log( "memory set" );
+    };
+
+
     var observationService = {
 
         isSet: function() {
@@ -83,6 +92,26 @@ myApp.factory( "memoryService", [ "weatherUnderground", "$log", "$q", function( 
 
         get: function( id ) {
             return _findById( id );
+        },
+
+        getAllHistory2: function() {
+            var defer = $q.defer();
+            if (this.isSet()) {
+                $log.log("has weather locally");
+                defer.resolve(self.getAllHistory());
+            }
+
+            else {
+                console.log("no weather locally");
+                restService.get().then(
+                    function (data) {
+                        _super(data);
+                        defer.resolve(observationService.getAllHistory());
+                    }
+                );
+            }
+
+            return defer.promise;
         }
 
     };

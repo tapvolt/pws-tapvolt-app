@@ -2,6 +2,9 @@
 
 myApp.factory( "restService", [ "weatherUnderground", "$log", "$http", "$q", function( weatherUnderground, $log, $http, $q ) {
 
+    var self = this;
+    self.data = [];
+
     var _getWeatherUrl = function() {
         var url = weatherUnderground.WU_URL;
         url = url.replace( /!KEY_ID/g, weatherUnderground.WU_KEY_ID );

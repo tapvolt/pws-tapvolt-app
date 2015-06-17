@@ -19,6 +19,11 @@ myApp
 
         var self = this;
 
+        var init2 = function() {
+            self.observations = memoryService.getAllHistory2();
+            self.summary =  []; //memoryService.getSummary2();
+        };
+
         var init = function() {
             if (memoryService.isSet()) {
                 $log.log("has weather locally");
@@ -35,6 +40,7 @@ myApp
                 );
             }
         };
+
         init();
 }])
 
