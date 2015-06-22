@@ -106,8 +106,7 @@ myApp.factory( "memoryService", [ "restService", "weatherUnderground", "$log", "
                 restService.get().then(
                     function (data) {
                         _super(data);
-                        var test = self.getAllHistory();
-                        defer.resolve(test);
+                        defer.resolve(self.getAllHistory());
                     }
                 );
             }

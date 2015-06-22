@@ -19,48 +19,14 @@ myApp
 
         var self = this;
 
-        self.getObs = function() {
-            memoryService.getAllHistory2()
-                .then(
-                function(obs) {
-                    self.observations  = obs;
-                }
-            );
-        };
-        self.getObs();
+        memoryService.getAllHistory2()
+            .then(
+            function(obs) {
+                self.observations  = obs;
+                self.summary = memoryService.getSummary();
+            }
+        );
 
-        //    memoryService.getAllHistory2().then(
-        //    /* success */
-        //    $log.log('hello')
-        //    //self.observations =
-        //);
-
-
-
-
-        //var init2 = function() {
-        //    self.observations = memoryService.getAllHistory2();
-        //    self.summary =  []; //memoryService.getSummary2();
-        //};
-
-        //var init = function() {
-        //    if (memoryService.isSet()) {
-        //        $log.log("has weather locally");
-        //        self.observations = memoryService.getAllHistory();
-        //        self.summary = memoryService.getSummary();
-        //    } else {
-        //        console.log("no weather locally");
-        //        restService.get().then(
-        //            function (data) {
-        //                memoryService.setAll(data);
-        //                self.observations = memoryService.getAllHistory();
-        //                self.summary = memoryService.getSummary();
-        //            }
-        //        );
-        //    }
-        //};
-
-        //init2();
 }])
 
 .controller( "DetailCtrl", [ "$scope", "$routeParams", "memoryService", function( $scope, $routeParams, memoryService ) {
@@ -70,5 +36,7 @@ myApp
 }])
 
 .controller('ReportListCtrl', ['$scope', '$routeParams', 'Report', function ($scope, $routeParams, Report) {
-    $scope.employees = Report.query({employeeId: $routeParams.employeeId});
+
+        $scope.employees = Report.query({employeeId: $routeParams.employeeId});
+
 }]);
