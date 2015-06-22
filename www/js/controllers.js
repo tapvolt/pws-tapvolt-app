@@ -19,29 +19,48 @@ myApp
 
         var self = this;
 
-        var init2 = function() {
-            self.observations = memoryService.getAllHistory2();
-            self.summary =  []; //memoryService.getSummary2();
+        self.getObs = function() {
+            memoryService.getAllHistory2()
+                .then(
+                function(obs) {
+                    self.observations  = obs;
+                }
+            );
         };
+        self.getObs();
 
-        var init = function() {
-            if (memoryService.isSet()) {
-                $log.log("has weather locally");
-                self.observations = memoryService.getAllHistory();
-                self.summary = memoryService.getSummary();
-            } else {
-                console.log("no weather locally");
-                restService.get().then(
-                    function (data) {
-                        memoryService.setAll(data);
-                        self.observations = memoryService.getAllHistory();
-                        self.summary = memoryService.getSummary();
-                    }
-                );
-            }
-        };
+        //    memoryService.getAllHistory2().then(
+        //    /* success */
+        //    $log.log('hello')
+        //    //self.observations =
+        //);
 
-        init();
+
+
+
+        //var init2 = function() {
+        //    self.observations = memoryService.getAllHistory2();
+        //    self.summary =  []; //memoryService.getSummary2();
+        //};
+
+        //var init = function() {
+        //    if (memoryService.isSet()) {
+        //        $log.log("has weather locally");
+        //        self.observations = memoryService.getAllHistory();
+        //        self.summary = memoryService.getSummary();
+        //    } else {
+        //        console.log("no weather locally");
+        //        restService.get().then(
+        //            function (data) {
+        //                memoryService.setAll(data);
+        //                self.observations = memoryService.getAllHistory();
+        //                self.summary = memoryService.getSummary();
+        //            }
+        //        );
+        //    }
+        //};
+
+        //init2();
 }])
 
 .controller( "DetailCtrl", [ "$scope", "$routeParams", "memoryService", function( $scope, $routeParams, memoryService ) {

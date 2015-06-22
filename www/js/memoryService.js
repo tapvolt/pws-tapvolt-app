@@ -2,12 +2,10 @@
 
 myApp.factory( "memoryService", [ "restService", "weatherUnderground", "$log", "$q", function( restService, weatherUnderground, $log, $q ) {
 
-    var self = this;
     var memory = {
         history: [],
         summary: null
     };
-
 
     /**
      * invert the array of observations so most recent come first
@@ -66,7 +64,7 @@ myApp.factory( "memoryService", [ "restService", "weatherUnderground", "$log", "
     var _super = function( data ) {
         memory.history = _invert( _addId( data.history.observations ) );
         memory.summary = data.history.dailysummary[0];
-        $log.log( "memory set" );
+        $log.log( "memory set 2!" );
     };
 
 
@@ -83,6 +81,7 @@ myApp.factory( "memoryService", [ "restService", "weatherUnderground", "$log", "
         },
 
         getAllHistory: function() {
+            $log.log( "send history" );
             return memory.history;
         },
 
@@ -95,6 +94,7 @@ myApp.factory( "memoryService", [ "restService", "weatherUnderground", "$log", "
         },
 
         getAllHistory2: function() {
+            var self = this;
             var defer = $q.defer();
             if (this.isSet()) {
                 $log.log("has weather locally");
@@ -106,7 +106,8 @@ myApp.factory( "memoryService", [ "restService", "weatherUnderground", "$log", "
                 restService.get().then(
                     function (data) {
                         _super(data);
-                        defer.resolve(observationService.getAllHistory());
+                        var test = self.getAllHistory();
+                        defer.resolve(test);
                     }
                 );
             }
