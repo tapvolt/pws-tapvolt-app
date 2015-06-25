@@ -19,8 +19,8 @@ myApp
 
         var self = this;
 
-        memoryService.getAllHistory2()
-            .then(
+        var promise = memoryService.getAllHistory2();
+        promise.then(
             function(obs) {
                 self.observations  = obs;
                 self.summary = memoryService.getSummary();
