@@ -14,5 +14,5 @@ cordova plugin add org.apache.cordova.geolocation
 
 
 
-
-https://codeship.com/projects/YOUR_PROJECT_UUID/status?branch=master
+raw image TODO
+https://codeship.com/projects/ef26c8c0-27cb-0133-931b-723b2a0a3044/status?branch=master
