@@ -13,3 +13,6 @@ cordova plugins add org.apache.cordova.statusbar
 cordova plugin add org.apache.cordova.geolocation
 
 
+
+
+https://codeship.com/projects/YOUR_PROJECT_UUID/status?branch=master
