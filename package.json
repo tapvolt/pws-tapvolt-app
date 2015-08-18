@@ -5,7 +5,8 @@
   "repository": "https://github.com/tapvolt/pws-tapvolt-app",
   "dependencies": {
   },
- "devDependencies": {
- },
-"cordovaPlugins": {
+  "devDependencies": {
+  },
+  "cordovaPlugins": {
+  }
 }
