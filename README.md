@@ -14,5 +14,4 @@ cordova plugin add org.apache.cordova.geolocation
 
 
 
-raw image TODO
-https://codeship.com/projects/ef26c8c0-27cb-0133-931b-723b2a0a3044/status?branch=master
+<img src="https://codeship.com/projects/ef26c8c0-27cb-0133-931b-723b2a0a3044/status?branch=develop">
