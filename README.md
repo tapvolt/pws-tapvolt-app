@@ -14,4 +14,14 @@ cordova plugin add org.apache.cordova.geolocation
 
 
 
+
+
+http://api.wunderground.com/weatherstation/WXCurrentObXML.asp?ID=IENGLAND925
+http://api.wunderground.com/weatherstation/WXDailyHistory.asp?ID=IENGLAND925&format=XML
+http://api.wunderground.com/weatherstation/WXDailyHistory.asp?ID=IENGLAND925&format=1
+
+http://www.wunderground.com/cgi-bin/findweather/getForecast?query=52.563473,-0.256001
+
+
+
 <img src="https://codeship.com/projects/ef26c8c0-27cb-0133-931b-723b2a0a3044/status?branch=develop">
